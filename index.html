@@ -136,9 +136,12 @@
 
 
         .button-container {
-            display: flex;
             justify-content: center;
-            margin: 20px;
+            position: relative;
+            display: inline-block;
+
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
         .button {
@@ -165,6 +168,30 @@
 
             transition-timing-function: ease-in-out;
             transition-duration: 0.1s; 
+        }
+
+        .num-notification {
+            width: 12px;
+            height: 12px;
+            background-color: #00c825;
+            position: absolute;
+            border-radius: 50%;
+            
+            top: -13px;
+            right: 154px;
+            display: none; /* Изначально скрыт */
+        }
+
+        .den-notification {
+            width: 12px;
+            height: 12px;
+            background-color: #00c825;
+            position: absolute;
+            border-radius: 50%;
+
+            top: -13px;
+            right: -2px;
+            display: none; /* Изначально скрыт */
         }
 
 
@@ -195,7 +222,6 @@
     </style>
 </head>
 <body>
-
     <script>
         // Проверяем, была ли страница уже открыта
         var isNotFirstVisit = localStorage.getItem('isNotFirstVisit');
@@ -210,9 +236,16 @@
 
     <header>
         <h1>Расписание</h1>
-        <div>   
-            <button style="margin-right:5px" id="numeratorBtn" class="active-button" onclick="changeSchedule('numerator')">Числитель</button>
-            <button style="margin-left: 5px" id="denominatorBtn" class="inactive-button" onclick="changeSchedule('denominator')">Знаменатель</button>
+        <div class="button-container">
+            <button style="margin-right:5px" id="numeratorBtn" class="active-button" onclick="changeSchedule('numerator')">
+                Числитель
+                <span id="numeratorCircle" class="num-notification"></span>
+            </button>
+        
+            <button style="margin-left: 5px" id="denominatorBtn" class="inactive-button" onclick="changeSchedule('denominator')">
+                Знаменатель
+                <span id="denominatorCircle" class="den-notification"></span>
+            </button>
         </div>
     </header>
 
@@ -401,9 +434,18 @@
         // Вычисляем недели от начальной даты в московском времени
         var weeksElapsed = Math.floor((currentMoscowTime - startDate) / (7 * 24 * 60 * 60 * 1000)) + 1;
 
+        document.getElementById("numeratorCircle").style.display = "none";
+        document.getElementById("denominatorCircle").style.display = "none";
+
         var typeOfWeek = 'Подождите...';
-        if (weeksElapsed % 2 === 1) {typeOfWeek = 'Числитель';}
-        else {typeOfWeek = 'Знаменатель';}
+        if (weeksElapsed % 2 === 1) {
+            typeOfWeek = 'Числитель';
+            document.getElementById("numeratorCircle").style.display = 'block';
+        }
+        else {
+            typeOfWeek = 'Знаменатель';
+            document.getElementById("denominatorCircle").style.display = 'block';
+        }
 
         // Обновляем текст элемента с номером недели
         document.getElementById("weekLegend").textContent = "Сейчас: " + weeksElapsed + " неделя | " + typeOfWeek;
