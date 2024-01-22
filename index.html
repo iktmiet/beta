@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,6 +17,10 @@
             padding: 0;
         }
 
+        h1 {
+            font-family: 'Manrope', sans-serif;
+        }
+
         .footer-text {
             text-align: center;
             margin-top: 10px;
@@ -25,7 +30,7 @@
 
         /* Обновленные стили для кнопок */
         button {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-weight: 600;
             font-size: 16px;
             padding: 10px 20px;
@@ -82,6 +87,15 @@
             font-weight: 600;
         }
 
+        .weekend-title {
+            text-align: left; 
+            padding: 15px;
+            background-color: #c45555;
+            font-size: 16px; /* Размер шрифта заголовка */
+            margin-bottom: 0; /* Убран отступ снизу */
+            font-weight: 600;
+        }
+
         .class-item, .break-item {
             padding: 14px;
             border-bottom: 1px solid #555555;
@@ -109,7 +123,7 @@
 
         .class-item .time-icon {
             font-size: 20px;
-            margin-left: 10px; /* Добавлен отступ между текстом и иконкой */
+            margin-right: 10px; /* Добавлен отступ между текстом и иконкой */
         }
 
         :root {
@@ -119,6 +133,40 @@
             --practice: #4fffc4;
             --event: #ff14ff;
         }
+
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .inactive-button {
+            background-color: #ffffff; /* Цвет неактивной кнопки (белый) */
+            color: #333333;
+
+            transition-timing-function: ease-in-out;
+            transition-duration: 0.1s; 
+        }
+
+        .active-button {
+            background-color: #007bff; /* Цвет активной кнопки (синий) */
+            color: #ffffff;
+
+            transition-timing-function: ease-in-out;
+            transition-duration: 0.1s; 
+        }
+
 
         /* Обновленные стили для классов лекций, семинаров, лаб, занятий и событий */
         .lecture strong, .lecture .time-icon {
@@ -141,27 +189,30 @@
             color: var(--event); /* Фиолетовый цвет для событий */
         }
 
+        .alpha50 {
+            opacity: 0.5;
+        }
     </style>
 </head>
 <body>
 
     <script>
         // Проверяем, была ли страница уже открыта
-        var isFirstVisit = localStorage.getItem('isFirstVisit');
+        var isNotFirstVisit = localStorage.getItem('isNotFirstVisit');
 
-        if (!isFirstVisit) {
+        if (!isNotFirstVisit) {
             // Если это первое посещение, переадресовываем на hi.html
-            window.location.href = 'hi.html';
+            window.location.href = 'hi';
             // Устанавливаем флаг о том, что страница была открыта
-            localStorage.setItem('isFirstVisit', 'true');
+            localStorage.setItem('isNotFirstVisit', 'true');
         }
     </script>
 
     <header>
         <h1>Расписание</h1>
         <div>   
-            <button id="numerator-btn">Числитель</button>
-            <button id="denominator-btn">Знаменатель</button>
+            <button style="margin-right:5px" id="numeratorBtn" class="active-button" onclick="changeSchedule('numerator')">Числитель</button>
+            <button style="margin-left: 5px" id="denominatorBtn" class="inactive-button" onclick="changeSchedule('denominator')">Знаменатель</button>
         </div>
     </header>
 
@@ -217,10 +268,125 @@
     <div class='my-legend' style="margin-top: 15px;">
         <div class='legend-scale'>
             <ul class='legend-labels'>
-                <li><span style='background:var(--event);'></span><b id="weekLegend">Неделя 99</b></li>
+                <li><span style='background:var(--event);'></span><b id="weekLegend">Определение недели... Обождите...</b></li>
             </ul>
         </div>
     </div>
+
+
+
+
+
+    <!-- ЧИСЛИТЕЛЬ -->
+
+    <script>
+        var numeratorSchedule = `
+                <!-- Понедельник -->
+            <div class="day-block">
+                <div class="weekend-title">ПОНЕДЕЛЬНИК</div>
+
+                <!-- ПАРА 1 -->
+                <div class="class-item lecture">
+                    <i class="material-icons time-icon">hub</i>
+                    <strong>Физика. Механика</strong>
+                    <span>1201</span>
+                    <span>10:00 - 11:30</span>
+                    <span>Федоренко И.В.</span>
+                </div>
+
+                <!-- ПАРА 2 -->
+                <div class="class-item seminar">
+                    <i class="material-symbols-outlined time-icon">function</i>
+                    <strong>Линейная алгебра</strong>
+                    <span>3303</span>
+                    <span>10:00 - 11:30</span>
+                    <span>Прокофьев А.А.</span>
+                </div>
+
+                <!-- ПЕРЕМЕНА -->
+                <div class="break-item"><b>Большой перерыв</b><br>12:00 - 12:40</div>
+
+                <!-- ПАРА 3 -->
+                <div class="class-item lab">
+                    <i class="material-symbols-outlined time-icon">functions</i>
+                    <strong>Математический анализ</strong>
+                    <span>1201</span>
+                    <span>10:00 - 11:30</span>
+                    <span>Погибельский А.П.</span>
+                </div>
+
+                <!-- ПАРА 4 -->
+                <div class="class-item practice">
+                    <i class="material-symbols-outlined time-icon">physical_therapy</i>
+                    <strong>Физическая культура</strong>
+                    <span></span>
+                    <span>10:00 - 11:30</span>
+                    <span>Кафедра Ф/В</span>
+                </div>
+            </div>
+        `;
+    </script>
+
+
+
+
+
+
+    <!-- ЗНАМЕНАТЕЛЬ -->
+
+    <script>
+        var denominatorSchedule = `
+                <!-- Понедельник -->
+            <div class="day-block">
+                <div class="day-title">ПОНЕДЕЛЬНИК</div>
+
+                <!-- ПАРА 1 -->
+                <div class="class-item lecture">
+                    <i class="material-icons time-icon">hub</i>
+                    <strong>Физика. Механика</strong>
+                    <span>1201</span>
+                    <span>10:00 - 11:30</span>
+                    <span>Федоренко И.В.</span>
+                </div>
+
+                <!-- ПАРА 2 -->
+                <div class="class-item seminar">
+                    <i class="material-symbols-outlined time-icon">function</i>
+                    <strong>Линейная алгебра</strong>
+                    <span>3303</span>
+                    <span>10:00 - 11:30</span>
+                    <span>Прокофьев А.А.</span>
+                </div>
+
+                <!-- ПЕРЕМЕНА -->
+                <div class="break-item"><b>Большой перерыв</b><br>12:00 - 12:40</div>
+
+                <!-- ПАРА 3 -->
+                <div class="class-item lab">
+                    <i class="material-symbols-outlined time-icon">functions</i>
+                    <strong>Математический анализ</strong>
+                    <span>1201</span>
+                    <span>10:00 - 11:30</span>
+                    <span>Погибельский А.П.</span>
+                </div>
+
+                <!-- ПАРА 4 -->
+                <div class="class-item practice">
+                    <i class="material-symbols-outlined time-icon">physical_therapy</i>
+                    <strong>Физическая культура</strong>
+                    <span></span>
+                    <span>10:00 - 11:30</span>
+                    <span>Кафедра Ф/В</span>
+                </div>
+            </div>
+        `;
+    </script>
+
+    
+
+
+
+
 
     <script>
     // Скрипт для определения текущей недели по московскому времени
@@ -235,8 +401,16 @@
         // Вычисляем недели от начальной даты в московском времени
         var weeksElapsed = Math.floor((currentMoscowTime - startDate) / (7 * 24 * 60 * 60 * 1000)) + 1;
 
+        var typeOfWeek = 'Подождите...';
+        if (weeksElapsed % 2 === 1) {typeOfWeek = 'Числитель';}
+        else {typeOfWeek = 'Знаменатель';}
+
         // Обновляем текст элемента с номером недели
-        document.getElementById("weekLegend").textContent = "Неделя " + weeksElapsed;
+        document.getElementById("weekLegend").textContent = "Сейчас: " + weeksElapsed + " неделя | " + typeOfWeek;
+
+        // Проверка четности и вызов changeSchedule
+        if (weeksElapsed % 2 === 1) {changeSchedule('numerator');}
+        else {changeSchedule('denominator');}
     });
     </script>
 
@@ -251,6 +425,7 @@
     </div>
     
     <div class="schedule-container">
+
         <!--
         <div class="day-block">
             <div class="day-title">ИНФОРМАЦИЯ</div>
@@ -268,61 +443,44 @@
         </div>
     -->
 
-        <!-- Понедельник -->
-        <div class="day-block">
-            <div class="day-title">ПОНЕДЕЛЬНИК</div>
-
-            <div class="class-item lecture">
-                <strong>Физика. Механика</strong>
-                <span>1201</span>
-                <span>10:00 - 11:30</span>
-                <span>Федоренко И.В.</span>
-                <i class="material-icons time-icon">hub</i>
-            </div>
-
-             <div class="class-item seminar">
-                <strong>Линейная алгебра</strong>
-                <span>3303</span>
-                <span>10:00 - 11:30</span>
-                <span>Прокофьев А.А.</span>
-                <i class="material-symbols-outlined time-icon">function</i>
-            </div>
-
-            
-            <div class="break-item"><b>Большой перерыв</b><br>12:00 - 12:40</div>
-
-
-             <div class="class-item lab">
-                <strong>Математический анализ</strong>
-                <span>1201</span>
-                <span>10:00 - 11:30</span>
-                <span>Погибельский А.П.</span>
-                <i class="material-symbols-outlined time-icon">functions</i>
-            </div>
-
-            <div class="class-item practice">
-                <strong>Физическая культура</strong>
-                <span></span>
-                <span>10:00 - 11:30</span>
-                <span>Кафедра Ф/В</span>
-                <i class="material-symbols-outlined time-icon">physical_therapy</i>
-            </div>
+        <div id="scheduleContainer">
         </div>
 
-        <!-- Вторник -->
-        <!-- Другие дни недели -->
-        
-    </div>
+        <script>
+            // Скрипт для изменения расписания
+            function changeSchedule(scheduleType) {
+                // Получаем элементы кнопок
+                var numeratorBtn = document.getElementById("numeratorBtn");
+                var denominatorBtn = document.getElementById("denominatorBtn");
+                var scheduleContainer = document.getElementById("scheduleContainer");
+                
+                if (scheduleType === 'numerator') {
+                    // Изменения для Числителя
+                    numeratorBtn.classList.remove("inactive-button");
+                    numeratorBtn.classList.add("active-button");
+                    denominatorBtn.classList.remove("active-button");
+                    denominatorBtn.classList.add("inactive-button");
+                    
+                    scheduleContainer.innerHTML = numeratorSchedule;
 
-    <script>
-        // Добавьте скрипты для изменения расписания и номера недели при нажатии кнопок
-    </script>
+                } else if (scheduleType === 'denominator') {
+                    // Изменения для Знаменателя
+                    numeratorBtn.classList.remove("active-button");
+                    numeratorBtn.classList.add("inactive-button");
+                    denominatorBtn.classList.remove("inactive-button");
+                    denominatorBtn.classList.add("active-button");
+
+                    scheduleContainer.innerHTML = denominatorSchedule;
+                }
+            }
+        </script>
+    </div>
 
     <!-- Текст в низу страницы -->
     <div class="footer-text">
         БАЗА ИКТ-11 | МИЭТ 2024
         <br/>
-        ПОСЛЕДНЕЕ ОБНОВЛЕНИЕ: 01.02.2024
+        <div class="alpha50">ПОСЛЕДНЕЕ ОБНОВЛЕНИЕ: 01.02.2024</div>
         <br />
         <br />
         dev: @eagalts

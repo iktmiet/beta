@@ -46,7 +46,7 @@
             background-color: #1e1e1e;
             padding: 10px;
             box-sizing: border-box;
-            padding-bottom: 425px;
+            padding-bottom: 120px;
         }
 
         .slide-text p {
@@ -142,7 +142,7 @@
     <div class="slide-container">
         <!-- Слайд 1 -->
         <div class="slide">
-            <img src="slide1_image.png" alt="Добро пожаловать">
+            <img src="hiimg/slide1_image.png" alt="Добро пожаловать">
             <div class="slide-text">
                 <p>Добро пожаловать на <b>новую</b> базу ИКТ-11!</p>
             </div>
@@ -150,7 +150,7 @@
 
         <!-- Слайд 2 -->
         <div class="slide">
-            <img src="slide2_image.png" alt="Актуальное расписание">
+            <img src="hiimg/slide2_image.png" alt="Актуальное расписание">
             <div class="slide-text">
                 <p>Актуальное расписание с перерывами.</p>
             </div>
@@ -158,7 +158,7 @@
 
         <!-- Слайд 3 -->
         <div class="slide">
-            <img src="slide3_image.png" alt="Все учебники в электронном формате">
+            <img src="hiimg/slide3_image.png" alt="Все учебники в электронном формате">
             <div class="slide-text">
                 <p>Все учебники - в электронном формате.</p>
             </div>
@@ -166,7 +166,7 @@
 
         <!-- Слайд 4 -->
         <div class="slide">
-            <img src="slide4_image.png" alt="Все важные ссылки всегда под рукой">
+            <img src="hiimg/slide4_image.png" alt="Все важные ссылки всегда под рукой">
             <div class="slide-text">
                 <p>Все важные ссылки всегда под рукой.</p>
             </div>
@@ -174,7 +174,7 @@
 
         <!-- Слайд 5 -->
         <div class="slide">
-            <img src="slide5_image.png" alt="Функция ДЗ больше недоступна: да-да...">
+            <img src="hiimg/slide5_image.png" alt="Функция ДЗ больше недоступна: да-да...">
             <div class="slide-text">
                 <p>Функции ДЗ больше нет. <div class="alpha">А надо было раньше...</div></p>
             </div>
@@ -217,7 +217,7 @@
         }
 
         function redirectToBase() {
-            window.location.href = 'index.html';
+            window.location.href = 'index';
         }
 
         function goToSlide(index) {
@@ -232,7 +232,7 @@
 
         function resetTimer() {
             clearInterval(timer);
-            timer = setInterval(nextSlide, 7000);
+            timer = setInterval(nextSlide, 5000);
         }
 
         resetTimer(); // Запустить таймер при загрузке страницы
