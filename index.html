@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Расписание</title>
     <style>
         body {
@@ -90,6 +90,7 @@
         .class-item span {
             font-size: 11px;
             display: block;
+            padding: 5px;
         }
         
         .class-item strong {
@@ -222,15 +223,21 @@
     </div>
 
     <script>
-        // Скрипт для определения текущей недели
-        document.addEventListener("DOMContentLoaded", function() {
-            var startDate = new Date("2023-09-01"); // Дата начала отсчёта
-            var currentDate = new Date(); // Текущая дата
-            var weeksElapsed = Math.floor((currentDate - startDate) / (7 * 24 * 60 * 60 * 1000)) + 1;
+    // Скрипт для определения текущей недели по московскому времени
+    document.addEventListener("DOMContentLoaded", function() {
+        var startDate = new Date("2023-08-28"); // Дата начала отсчёта
+        var currentDate = new Date(); // Текущая дата
+        var moscowTimezoneOffset = 3; // UTC+3 (Московское время)
+        
+        // Получаем текущее московское время
+        var currentMoscowTime = new Date(currentDate.getTime() + moscowTimezoneOffset * 60 * 60 * 1000);
+        
+        // Вычисляем недели от начальной даты в московском времени
+        var weeksElapsed = Math.floor((currentMoscowTime - startDate) / (7 * 24 * 60 * 60 * 1000)) + 1;
 
-            // Обновляем текст элемента с номером недели
-            document.getElementById("weekLegend").textContent = "Неделя " + weeksElapsed;
-        });
+        // Обновляем текст элемента с номером недели
+        document.getElementById("weekLegend").textContent = "Неделя " + weeksElapsed;
+    });
     </script>
 
     <div class='my-legend'>
@@ -267,7 +274,7 @@
 
             <div class="class-item lecture">
                 <strong>Физика. Механика</strong>
-                <span>ауд. 1201</span>
+                <span>1201</span>
                 <span>10:00 - 11:30</span>
                 <span>Федоренко И.В.</span>
                 <i class="material-icons time-icon">hub</i>
@@ -275,7 +282,7 @@
 
              <div class="class-item seminar">
                 <strong>Линейная алгебра</strong>
-                <span>ауд. 3303</span>
+                <span>3303</span>
                 <span>10:00 - 11:30</span>
                 <span>Прокофьев А.А.</span>
                 <i class="material-symbols-outlined time-icon">function</i>
@@ -287,7 +294,7 @@
 
              <div class="class-item lab">
                 <strong>Математический анализ</strong>
-                <span>ауд. 1201</span>
+                <span>1201</span>
                 <span>10:00 - 11:30</span>
                 <span>Погибельский А.П.</span>
                 <i class="material-symbols-outlined time-icon">functions</i>
@@ -295,7 +302,7 @@
 
             <div class="class-item practice">
                 <strong>Физическая культура</strong>
-                <span>ауд. 5000</span>
+                <span></span>
                 <span>10:00 - 11:30</span>
                 <span>Кафедра Ф/В</span>
                 <i class="material-symbols-outlined time-icon">physical_therapy</i>
@@ -314,6 +321,11 @@
     <!-- Текст в низу страницы -->
     <div class="footer-text">
         БАЗА ИКТ-11 | МИЭТ 2024
+        <br/>
+        ПОСЛЕДНЕЕ ОБНОВЛЕНИЕ: 01.02.2024
+        <br />
+        <br />
+        dev: @eagalts
     </div>
 </body>
 </html>
