@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание</title>
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif; /* Заменено 'Arial' на 'Nunito' */
+            background-color: #1e1e1e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 10px;
+            opacity: 0.5; /* Прозрачность 50% */
+        }
+
+        /* Обновленные стили для кнопок */
+        button {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px; /* Скругление углов */
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        #numerator-btn {
+            background-color: #007bff; /* Цвет активной кнопки (синий) */
+            color: #ffffff;
+        }
+
+        #denominator-btn {
+            background-color: #ffffff; /* Цвет неактивной кнопки (белый) */
+            color: #333333;
+        }
+
+
+        header {
+            text-align: left;
+            padding: 10px;
+            padding-left: 30px;
+            background-color: #333333;
+        }
+
+        .schedule-container {
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+        }
+
+        .day-block {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #333333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .break-item {
+            padding: 15px;
+            background-color: #444444;
+        }
+
+        .day-title {
+            text-align: left; 
+            padding: 15px;
+            background-color: #555555;
+            font-size: 16px; /* Размер шрифта заголовка */
+            margin-bottom: 0; /* Убран отступ снизу */
+            font-weight: 600;
+        }
+
+        .class-item, .break-item {
+            padding: 14px;
+            border-bottom: 1px solid #555555;
+        }
+
+        .class-item span {
+            font-size: 11px;
+            display: block;
+        }
+        
+        .class-item strong {
+            font-size: 14px;
+            display: flex;
+            align-items: center; /* Центрирование вертикально */
+        }
+
+        .class-item {
+            display: flex;
+            justify-content: space-between; /* Равномерное распределение между элементами */
+            align-items: center; /* Центрирование вертикально */
+            padding: 15px;
+            border-bottom: 1px solid #555555;
+        }
+
+        .class-item .time-icon {
+            font-size: 20px;
+            margin-left: 10px; /* Добавлен отступ между текстом и иконкой */
+        }
+
+        :root {
+            --lecture: #53e51e;
+            --seminar: #77b9ff;
+            --lab: #ff8c00;
+            --practice: #4fffc4;
+            --event: #ff14ff;
+        }
+
+        /* Обновленные стили для классов лекций, семинаров, лаб, занятий и событий */
+        .lecture strong, .lecture .time-icon {
+            color: var(--lecture); /* Зелёный цвет для лекций */
+        }
+
+        .seminar strong, .seminar .time-icon {
+            color: var(--seminar); /* Синий цвет для семинаров */
+        }
+
+        .lab strong, .lab .time-icon {
+            color: var(--lab); /* Оранжевый цвет для лабораторных */
+        }
+
+        .practice strong, .practice .time-icon {
+            color: var(--practice); /* Тёмно-зелёный цвет для занятий */
+        }
+
+        .event strong, .event .time-icon {
+            color: var(--event); /* Фиолетовый цвет для событий */
+        }
+
+    </style>
+</head>
+<body>
+
+    <script>
+        // Проверяем, была ли страница уже открыта
+        var isFirstVisit = localStorage.getItem('isFirstVisit');
+
+        if (!isFirstVisit) {
+            // Если это первое посещение, переадресовываем на hi.html
+            window.location.href = 'hi.html';
+            // Устанавливаем флаг о том, что страница была открыта
+            localStorage.setItem('isFirstVisit', 'true');
+        }
+    </script>
+
+    <header>
+        <h1>Расписание</h1>
+        <div>   
+            <button id="numerator-btn">Числитель</button>
+            <button id="denominator-btn">Знаменатель</button>
+        </div>
+    </header>
+
+    <style type='text/css'>
+        .my-legend {
+            display: flex; /* Добавлено для размещения в строку */
+            justify-content: space-between; /* Распределение элементов в строке */
+        }
+    
+        .my-legend .legend-title {
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 90%;
+        }
+    
+        .my-legend .legend-scale ul {
+            margin: 0; /* Изменено с 15px на 0 */
+            padding: 0;
+            list-style: none;
+            display: flex; /* Добавлено для размещения в строку */
+        }
+    
+        .my-legend .legend-scale ul li {
+            font-size: 80%;
+            list-style: none;
+            margin-left: 15px; /* Добавлен отступ между элементами */
+            line-height: 18px;
+            margin-bottom: 2px;
+        }
+    
+        .my-legend ul.legend-labels li span {
+            display: block;
+            float: left;
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            margin-right: 5px;
+            margin-left: 0;
+        }
+    
+        .my-legend .legend-source {
+            font-size: 70%;
+            color: #999;
+            clear: both;
+        } 
+    
+        .my-legend a {
+            color: #777;
+        }
+    </style>
+    
+    <div class='my-legend' style="margin-top: 15px;">
+        <div class='legend-scale'>
+            <ul class='legend-labels'>
+                <li><span style='background:var(--event);'></span><b id="weekLegend">Неделя 99</b></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Скрипт для определения текущей недели
+        document.addEventListener("DOMContentLoaded", function() {
+            var startDate = new Date("2023-09-01"); // Дата начала отсчёта
+            var currentDate = new Date(); // Текущая дата
+            var weeksElapsed = Math.floor((currentDate - startDate) / (7 * 24 * 60 * 60 * 1000)) + 1;
+
+            // Обновляем текст элемента с номером недели
+            document.getElementById("weekLegend").textContent = "Неделя " + weeksElapsed;
+        });
+    </script>
+
+    <div class='my-legend'>
+        <div class='legend-scale'>
+            <ul class='legend-labels'>
+                <li><span style='background:var(--lecture);'></span>Лекция</li>
+                <li><span style='background:var(--seminar);'></span>Семинар</li>
+                <li><span style='background:var(--lab);'></span>Лабораторная</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="schedule-container">
+        <!--
+        <div class="day-block">
+            <div class="day-title">ИНФОРМАЦИЯ</div>
+
+            <div class="class-item event">
+                <strong>Пересдачи по физике</strong>
+            </div>
+
+            <div class="class-item event">
+                <span>26.01 в 12:00, аудитория 1201</span>
+            </div>
+            <div class="class-item event">
+                <span>27.01 в 10:00, аудитория 1201</span>
+            </div>
+        </div>
+    -->
+
+        <!-- Понедельник -->
+        <div class="day-block">
+            <div class="day-title">ПОНЕДЕЛЬНИК</div>
+
+            <div class="class-item lecture">
+                <strong>Физика. Механика</strong>
+                <span>ауд. 1201</span>
+                <span>10:00 - 11:30</span>
+                <span>Федоренко И.В.</span>
+                <i class="material-icons time-icon">hub</i>
+            </div>
+
+             <div class="class-item seminar">
+                <strong>Линейная алгебра</strong>
+                <span>ауд. 3303</span>
+                <span>10:00 - 11:30</span>
+                <span>Прокофьев А.А.</span>
+                <i class="material-symbols-outlined time-icon">function</i>
+            </div>
+
+            
+            <div class="break-item"><b>Большой перерыв</b><br>12:00 - 12:40</div>
+
+
+             <div class="class-item lab">
+                <strong>Математический анализ</strong>
+                <span>ауд. 1201</span>
+                <span>10:00 - 11:30</span>
+                <span>Погибельский А.П.</span>
+                <i class="material-symbols-outlined time-icon">functions</i>
+            </div>
+
+            <div class="class-item practice">
+                <strong>Физическая культура</strong>
+                <span>ауд. 5000</span>
+                <span>10:00 - 11:30</span>
+                <span>Кафедра Ф/В</span>
+                <i class="material-symbols-outlined time-icon">physical_therapy</i>
+            </div>
+        </div>
+
+        <!-- Вторник -->
+        <!-- Другие дни недели -->
+        
+    </div>
+
+    <script>
+        // Добавьте скрипты для изменения расписания и номера недели при нажатии кнопок
+    </script>
+
+    <!-- Текст в низу страницы -->
+    <div class="footer-text">
+        БАЗА ИКТ-11 | МИЭТ 2024
+    </div>
+</body>
+</html>
