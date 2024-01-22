@@ -5,6 +5,27 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap">
 
     <style type='text/css'>
+
+        @media only screen and (max-width: 767px) {
+            /* Применить стили только для экранов с шириной до 767px (мобильные устройства и телефоны) */
+            body {
+                transform: scale(2); /* Увеличиваем масштаб в 2 раза */
+                transform-origin: top left; /* Задаем точку привязки масштабирования */
+            }
+        
+            .slide-container {
+                width: 1000%; /* Увеличиваем ширину контейнера для адаптации содержимого */
+            }
+        
+            .slide {
+                flex: 50%; /* Увеличиваем ширину слайдов в 2 раза */
+            }
+        
+            .slide-text {
+                padding-bottom: 240px; /* Увеличиваем отступ снизу слайд-текста */
+            }
+        }
+
         
         body {
             margin: 0;
