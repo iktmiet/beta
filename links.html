@@ -25,6 +25,7 @@
         .footer-text {
             text-align: center;
             margin-top: 10px;
+            margin-bottom: 30px;
             font-size: 10px;
             opacity: 0.5; /* Прозрачность 50% */
         }
@@ -70,6 +71,13 @@
             font-size: 16px; /* Размер шрифта заголовка */
             margin-bottom: 0; /* Убран отступ снизу */
             font-weight: 600;
+
+            align-items: center; /* Центрирование вертикально */
+            display: flex;
+        }
+
+        .id-title span {
+           padding-left: 10px;
         }
 
         .id-item {
@@ -147,7 +155,7 @@
 </head>
 <body>
     <header>
-        <h1>Учебники</h1>
+        <h1>Ресурсы</h1>
         <div>
             <button id="returnBtn" style="margin-bottom: 20px;" class="additional-button" onclick="returnToBase()">
                 На главную
@@ -156,22 +164,99 @@
     </header>
 
     <div class="id-container">
-        <div class="id-block">
-            <div class="id-title">Математический анализ</div>
 
-            <div class="id-item" style="padding:15px;">
-                <span>Ржавинская, Олейник</span>
-                <span>Часть 1</span>
-                <i class="material-symbols-outlined time-icon">functions</i>
+        <!-- ОРИОКС -->
+        <div class="id-block">
+            <div class="id-title">
+                <img 
+                    src="https://is1-ssl.mzstatic.com/image/thumb/Purple124/v4/04/cc/ab/04ccaba8-c482-1149-76c7-2b5c9ced37d5/source/512x512bb.jpg" 
+                    loading="lazy" 
+                    width="25" height="25" 
+                    style="border-radius: 50%;"
+                />
+                <span>ОРИОКС</span>
             </div>
 
-            <div class="id-item">
-                <button id="numerator-btn">Открыть</button>
+            <div class="id-item" style="padding:15px;">
+                <span>Сайт, который ломает судьбы людей.</span>
+                <button 
+                    style="margin-bottom: 0px; margin-top: 0px" 
+                    id="orioksBTN" 
+                    onclick="openLink(_ORIOKS_link)">
+                        Перейти
+                </button>
+            </div>
+        </div>
+
+        <!-- STUDFILES -->
+        <div class="id-block">
+            <div class="id-title">
+                <img 
+                    src="https://encrypted-tbn2.gstatic.com/faviconV2?url=https://studfile.net&client=VFE&size=64&type=FAVICON&fallback_opts=TYPE,SIZE,URL&nfrp=2" 
+                    loading="lazy" 
+                    width="25" height="25" 
+                    style="border-radius: 30%; background-color: white;"
+                />
+                <span>StudFiles</span>
+            </div>
+
+            <div class="id-item" style="padding:15px;">
+                <span>Всякие полезные вещи, которые оставили выжившие студенты (дай Бог им здоровья).</span>
+                <button 
+                    style="margin-bottom: 0px; margin-top: 0px" 
+                    id="orioksBTN" 
+                    onclick="openLink(_STUDFL_link)">
+                        Перейти
+                </button>
+            </div>
+        </div>
+
+        <!-- DISCORD -->
+        <div class="id-block">
+            <div class="id-title">
+                <img 
+                    src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxsG72wAo9EWJR4yQWyJJaDb6rYcBtJvTvH3UoAS4JFNDaxGhmKNaMwgElLURlRFeVkLCjkfnXmWtINWZIrPGYq0-&format=source" 
+                    loading="lazy" 
+                    width="25" height="25" 
+                    style="border-radius: 30%;"
+                />
+                <span>Discord-сервер ИКТ-11</span>
+            </div>
+
+            <div class="id-item" style="padding:15px;">
+                <span>∀ ε > 0 ∃ N: ∀ m,n > N |Xn - Xm| < ε</span>
+                <button 
+                    style="margin-bottom: 0px; margin-top: 0px" 
+                    id="orioksBTN" 
+                    onclick="openLink(_DISCORD_link)">
+                        Перейти
+                </button>
+            </div>
+        </div>
+
+        <!-- ОРИОКС МОНИТОРИНГ -->
+        <div class="id-block">
+            <div class="id-title">
+                <img 
+                    src="https://avatars.githubusercontent.com/u/102094542?s=200&v=4" 
+                    loading="lazy" 
+                    width="25" height="25" 
+                    style="border-radius: 30%;"
+                />
+                <span>ОРИОКС Мониторинг</span>
+            </div>
+
+            <div class="id-item" style="padding:15px;">
+                <span>Бот в Telegram, присылающий уведомления о новых оценках в ОРИОКСе.</span>
+                <button 
+                    style="margin-bottom: 0px; margin-top: 0px" 
+                    id="orioksBTN" 
+                    onclick="openLink(_MONITOR_link)">
+                        Перейти
+                </button>
             </div>
         </div>
     </div>
-
-    <!-- Добавьте другие блоки с учебниками и их ссылками -->
 
     <div class="footer-text">
         БАЗА ИКТ-11 | МИЭТ 2024
@@ -182,7 +267,12 @@
             window.location.href = 'index.html';
         }
 
-        function openBook(link) {
+        var _ORIOKS_link = "https://orioks.miet.ru/"
+        var _MONITOR_link = "https://t.me/orioks_monitoring_bot"
+        var _STUDFL_link = "https://studfile.net/miet/"
+        var _DISCORD_link = "https://discord.gg/GkQTgGtB"
+
+        function openLink(link) {
             window.open(link, '_blank');
         }
     </script>
