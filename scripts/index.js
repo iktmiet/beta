@@ -1,6 +1,6 @@
 // Функция для загрузки содержимого из файла JSON
 function loadContent() {
-    fetch('./content/information.json')
+    fetch('../content/information.json')
     .then(response => response.json())
     .then(data => {
         document.getElementById('headerInfo').innerHTML = `<span style="${data.headerInfo.style}">${data.headerInfo.text}</span>`;
