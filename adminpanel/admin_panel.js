@@ -1,6 +1,6 @@
 // Функция для загрузки содержимого из файла JSON
 function loadContent() {
-    fetch('./content/information.json')
+    fetch('../content/information.json')
     .then(response => response.json())
     .then(data => {
         document.getElementById('headerInfo').innerHTML = `<span style="${data.headerInfo.style}">${data.headerInfo.text}</span>`;
@@ -13,7 +13,7 @@ function loadContent() {
 
 // Функция для сохранения содержимого обратно в файл JSON
 function saveContent(content) {
-    fetch('./content/save_information.php', {
+    fetch('../content/save_information.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
