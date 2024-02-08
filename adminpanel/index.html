@@ -12,13 +12,13 @@
         <title>ИКТ МИЭТ</title>
 
         <!-- СТИЛИ -->
-        <link rel="stylesheet" href="./styles/main.css" />
-        <link rel="stylesheet" href="./styles/modalWindow.css" />
-        <link rel="stylesheet" href="./styles/legend.css" />
+        <link rel="stylesheet" href="../styles/main.css" />
+        <link rel="stylesheet" href="../styles/modalWindow.css" />
+        <link rel="stylesheet" href="../styles/legend.css" />
 
         <!-- ИКОНКА -->
-        <link rel="icon"          type="image/x-icon" href="./icons/logo.ico">
-        <link rel="shortcut icon" type="image/x-icon" href="./icons/logo.ico">
+        <link rel="icon"          type="image/x-icon" href="../icons/logo.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="../icons/logo.ico">
     </head>
 
     <body>
@@ -63,34 +63,13 @@
             </div>
         </div>
 
-
-        <!-- -------------- -->
-        <!--   РАСПИСАНИЕ   -->
-        <!-- -------------- -->
-        <!--    ЧИСЛИТЕЛЬ   -->
-        <!-- -------------- -->
-
-        <script src="scripts/global_numerator_schedule.js"></script>
-        <script>
-            var numeratorSchedule = NUMERATOR_SCHEDULE;
-        </script>
-
-        <!-- -------------- -->
-        <!--   ЗНАМЕНАТЕЛЬ  -->
-        <!-- -------------- -->
-
-        <script src="scripts/global_denominator_schedule.js"></script>
-        <script>
-            var denominatorSchedule = DENOMINATOR_SCHEDULE;
-        </script>
-
         <!-- ----------------- -->
         <!--     СКРИПТ ДЛЯ    -->
         <!--     ОПРЕДЕЛЕНИЯ   -->
         <!--   ТЕКУЩЕЙ НЕДЕЛИ  -->
         <!-- ----------------- -->
 
-        <script src="./scripts/getCurrentWeek.js"></script>
+        <script src="../scripts/getCurrentWeek.js"></script>
         <script>document.addEventListener("DOMContentLoaded", function() {getCurrentWeek();});</script>
         
         <!-- ----------------- -->
@@ -102,7 +81,7 @@
         <div id="importantInfo" class="contentBlock"></div>
         <div id="mainText2" class="contentBlock"></div>
         
-        <script src="./scripts/admin_panel.js"></script>
+        <script src="admin_panel.js"></script>
 
 
         <!-- Текст в низу страницы -->
@@ -115,7 +94,7 @@
             <br />
             <div id="version">Версия 2.X.X (...) | dev: @eagalts</div>
 
-            <script src="./scripts/global_var.js"></script>
+            <script src="../scripts/global_var.js"></script>
             <script>
                 document.getElementById('lastUpdate').innerHTML = `ПОСЛЕДНЕЕ ОБНОВЛЕНИЕ: ${appInfo.lastUpdate}`;
                 document.getElementById('version').innerHTML = `ver: ${appInfo.version} | dev: @eagalts`;
