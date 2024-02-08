@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <!-- ШРИФТЫ -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>ИКТ МИЭТ</title>
+
+        <!-- СТИЛИ -->
+        <link rel="stylesheet" href="./styles/main.css" />
+        <link rel="stylesheet" href="./styles/modalWindow.css" />
+        <link rel="stylesheet" href="./styles/legend.css" />
+
+        <!-- ИКОНКА -->
+        <link rel="icon"          type="image/x-icon" href="./icons/logo.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="./icons/logo.ico">
+    </head>
+
+    <body>
+        <!-- Запуск приветственного окна при первом запуске приложения -->
+        <script>
+            // Проверяем, была ли страница уже открыта
+            var isNotFirstVisit = localStorage.getItem('isNotFirstVisit');
+
+            if (!isNotFirstVisit) {
+                // Если это первое посещение, переадресовываем
+                window.location.href = 'welcome';
+                // Устанавливаем флаг о том, что страница была открыта
+                localStorage.setItem('isNotFirstVisit', 'true');
+            }
+        </script>
+
+        <!-- ------ -->
+        <!-- ХЕАДЕР -->
+        <!-- ------ -->
+
+        <header>
+            <h1>Панель управления</h1>
+
+            <!-- Кнопки (верхний блок) -->
+
+            <div class="button-container">
+                <button style="margin-right:5px" id="numeratorBtn" class="active-button" onclick="changeSchedule('numerator')">
+                    Управление
+                </button>
+            </div>
+        </header>
+
+        
+        <!-- ЛЕГЕНДА -->
+        <!-- О БОГИНЕ МЕЧЕЙ-->
+
+        <div class='my-legend' style="margin-top: 15px;">
+            <div class='legend-scale'>
+                <ul class='legend-labels'>
+                    <li><span style='background:var(--event);'></span><b id="weekLegend">Определение недели... Обождите...</b></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- -------------- -->
+        <!--   РАСПИСАНИЕ   -->
+        <!-- -------------- -->
+        <!--    ЧИСЛИТЕЛЬ   -->
+        <!-- -------------- -->
+
+        <script src="scripts/global_numerator_schedule.js"></script>
+        <script>
+            var numeratorSchedule = NUMERATOR_SCHEDULE;
+        </script>
+
+        <!-- -------------- -->
+        <!--   ЗНАМЕНАТЕЛЬ  -->
+        <!-- -------------- -->
+
+        <script src="scripts/global_denominator_schedule.js"></script>
+        <script>
+            var denominatorSchedule = DENOMINATOR_SCHEDULE;
+        </script>
+
+        <!-- ----------------- -->
+        <!--     СКРИПТ ДЛЯ    -->
+        <!--     ОПРЕДЕЛЕНИЯ   -->
+        <!--   ТЕКУЩЕЙ НЕДЕЛИ  -->
+        <!-- ----------------- -->
+
+        <script src="./scripts/getCurrentWeek.js"></script>
+        <script>document.addEventListener("DOMContentLoaded", function() {getCurrentWeek();});</script>
+        
+        <!-- ----------------- -->
+        <!--  БЛОК   -->
+        <!-- ----------------- -->
+
+        <div id="headerInfo" class="contentBlock"></div>
+        <div id="mainText" class="contentBlock"></div>
+        <div id="importantInfo" class="contentBlock"></div>
+        <div id="mainText2" class="contentBlock"></div>
+        
+        <script src="./scripts/admin_panel.js"></script>
+
+
+        <!-- Текст в низу страницы -->
+
+        <div class="footer-text" style="padding-bottom: 20px;">
+            БАЗА ИКТ-11 | МИЭТ 2024
+            <br/>
+            <div class="alpha50"><div id="lastUpdate"></div></div>
+            <br />
+            <br />
+            <div id="version">Версия 2.X.X (...) | dev: @eagalts</div>
+
+            <script src="./scripts/global_var.js"></script>
+            <script>
+                document.getElementById('lastUpdate').innerHTML = `ПОСЛЕДНЕЕ ОБНОВЛЕНИЕ: ${appInfo.lastUpdate}`;
+                document.getElementById('version').innerHTML = `ver: ${appInfo.version} | dev: @eagalts`;
+            </script>
+        </div>
+    </body>
+</html>
