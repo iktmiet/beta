@@ -12,13 +12,13 @@
         <title>ИКТ МИЭТ</title>
 
         <!-- СТИЛИ -->
-        <link rel="stylesheet" href="../styles/main.css" />
-        <link rel="stylesheet" href="../styles/modalWindow.css" />
-        <link rel="stylesheet" href="../styles/legend.css" />
+        <link rel="stylesheet" href="../beta/styles/main.css" />
+        <link rel="stylesheet" href="../beta/styles/modalWindow.css" />
+        <link rel="stylesheet" href="../beta/styles/legend.css" />
 
         <!-- ИКОНКА -->
-        <link rel="icon"          type="image/x-icon" href="../icons/logo.ico">
-        <link rel="shortcut icon" type="image/x-icon" href="../icons/logo.ico">
+        <link rel="icon"          type="image/x-icon" href="../beta/icons/logo.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="../beta/icons/logo.ico">
     </head>
 
     <body>
@@ -69,7 +69,7 @@
         <!--   ТЕКУЩЕЙ НЕДЕЛИ  -->
         <!-- ----------------- -->
 
-        <script src="../scripts/getCurrentWeek.js"></script>
+        <script src="../beta/scripts/getCurrentWeek.js"></script>
         <script>document.addEventListener("DOMContentLoaded", function() {getCurrentWeek();});</script>
         
         <!-- ----------------- -->
@@ -81,7 +81,7 @@
         <div id="importantInfo" class="contentBlock"></div>
         <div id="mainText2" class="contentBlock"></div>
         
-        <script src="../scripts/admin_panel.js"></script>
+        <script src="../beta/scripts/admin_panel.js"></script>
         <button onclick="saveContent(newContent);">Update</button>
 
 
@@ -95,7 +95,7 @@
             <br />
             <div id="version">Версия 2.X.X (...) | dev: @eagalts</div>
 
-            <script src="../scripts/global_var.js"></script>
+            <script src="../beta/scripts/global_var.js"></script>
             <script>
                 document.getElementById('lastUpdate').innerHTML = `ПОСЛЕДНЕЕ ОБНОВЛЕНИЕ: ${appInfo.lastUpdate}`;
                 document.getElementById('version').innerHTML = `ver: ${appInfo.version} | dev: @eagalts`;
