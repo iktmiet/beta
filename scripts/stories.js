@@ -20,6 +20,11 @@ function openStoriesPage(currentStory) {
 }
 
 function storiesLoad(currentStory, storiesPage) {
+    const storyArray = currentStoriesAvailable[currentStory];
+    if (storyArray) {
+        console.log(storyArray.TEXT_5);
+    }
+
     changeCurrentImage("img_current1", currentStory.IMAGE_1)
     changeCurrentImage("img_current2", currentStory.IMAGE_2)
     changeCurrentImage("img_current3", currentStory.IMAGE_3)

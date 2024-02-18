@@ -14,3 +14,5 @@ window.pwaStory = {
     IMAGE_5: "stories/pwa/pwa_5.png",
     TEXT_5: "Пролистайте вниз, выберите 'На экран Домой', нажмите 'Добавить'. Готово!"
 }
+
+window.currentStoriesAvailable = {pwaStory}
