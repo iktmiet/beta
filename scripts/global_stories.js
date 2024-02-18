@@ -15,4 +15,21 @@ window.pwaStory = {
     TEXT_5: "Пролистайте вниз, выберите 'На экран Домой', нажмите 'Добавить'. Готово!"
 }
 
-window.currentStoriesAvailable = {pwaStory}
+window.Stories = {
+    IMAGE_1: "stories/Stories/new_1.png",
+    TEXT_1: "<b>Обновление на сайте!</b><br/>Теперь есть истории и не только:",
+    
+    IMAGE_2: "stories/Stories/new_2.png",
+    TEXT_2: "<b>На сайте появились Истории</b>: вся важная и актуальная информация будет здесь.",
+
+    IMAGE_3: "stories/Stories/new_3.png",
+    TEXT_3: "Просматривайте новые истории, особенно - с красной рамкой: там что-то срочное.",
+
+    IMAGE_4: "stories/Stories/new_4.png",
+    TEXT_4: "<b>Новые учебники уже доступны в разделе Учебники.</b> Обратите внимание на обозначения",
+
+    IMAGE_5: "stories/Stories/new_5.png",
+    TEXT_5: "<b>Сайт снова можно установить, как обычное приложение.</b> Об этом - в следующей истории."
+}
+
+window.currentStoriesAvailable = {pwaStory, Stories}
