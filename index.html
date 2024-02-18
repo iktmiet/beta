@@ -10,15 +10,25 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>ИКТ МИЭТ</title>
+    
+        <!-- PWA -->
+        <link rel="manifest" href="manifest.json">
+        <link rel="import" href="meta.html">
 
         <!-- СТИЛИ -->
         <link rel="stylesheet" href="styles/main.css" />
         <link rel="stylesheet" href="styles/modalWindow.css" />
         <link rel="stylesheet" href="styles/legend.css" />
+        <link rel="stylesheet" href="styles/stories.css" />
+        <link rel="stylesheet" href="styles/schedule.css" />
+
+        <!-- СКРИПТЫ -->
+        <script src="scripts/stories.js"></script>
+        <script src="scripts/global_stories.js"></script>
 
         <!-- ИКОНКА -->
-        <link rel="icon"          type="image/x-icon" href="../icons/logo.ico">
-        <link rel="shortcut icon" type="image/x-icon" href="../icons/logo.ico">
+        <link rel="icon"          type="image/x-icon" href="./icons/logo.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="./icons/logo.ico">
     </head>
 
     <body>
@@ -192,56 +202,59 @@
             <!-- ----------------- -->
             <!--     ИНФОРМАЦИЯ    -->
             <!-- ----------------- -->
-            <div class="day-block">
-                <div class="day-title">ИНФОРМАЦИЯ</div>
-
-                <div class="class-item event">
-                    <strong style="font-size:17px;">📚 Получение учебников на второй семестр</strong>
+            <script>
+                checkViews('pwaStory')
+                checkViews('story')
+            </script>
+            
+            <div class="stories-block">
+                <div 
+                    class="story unviewed" 
+                    onclick="openStoriesPage('pwaStory')" 
+                    data-story-id="pwaStory"
+                    style="background: linear-gradient(45deg, #f7a9c7, #bea1fd);"
+                >
+                    <i class="material-symbols-outlined time-icon" style="font-size: 36px; color: black;">arrow_downward</i>
                 </div>
 
-                <div class="class-item event">
-                        <button 
-                            onclick="openModal()" 
-                            style="margin-right: 10px; margin-bottom: 0px; margin-top: 0px;" 
-                            class="additional-button">
-                                Подробнее...
-                        </button>
+                <div 
+                    class="story unviewed" 
+                    onclick="openStoriesPage('story')" 
+                    data-story-id="story"
+                    style="background: linear-gradient(45deg, #a9c2f7, #a1fdc4);"
+                >
+                    <i class="material-symbols-outlined time-icon" style="font-size: 36px; color: black;">kid_star</i>
+                </div>
+            </div>
 
-                        <div id="myModal" class="modal">
-                            <div class="modal-content">
-                                <div id="headerInfo" class="contentBlock"></div>
-                                <div id="mainText" class="contentBlock"></div>
-                                <div id="importantInfo" class="contentBlock"></div>
-                                <div id="mainText2" class="contentBlock"></div>
-                                
-                                <!-- <script src="../scripts/index.js"></script> -->
 
-                                <script>
-                                    // Функция для загрузки содержимого из файла JSON
-                                    function loadContent() {
-                                        fetch('../content/information.json')
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            document.getElementById('headerInfo').innerHTML = `<span style="${data.headerInfo.style}">${data.headerInfo.text}</span>`;
-                                            document.getElementById('mainText').innerHTML = `<span style="${data.mainText.style}">${data.mainText.text}</span>`;
-                                            document.getElementById('importantInfo').innerHTML = `<span style="${data.importantInfo.style}">${data.importantInfo.text}</span>`;
-                                            document.getElementById('mainText2').innerHTML = `<span style="${data.mainText2.style}">${data.mainText2.text}</span>`;
-                                        })
-                                        .catch(error => console.error('Error loading content:', error));
-                                    }
 
-                                    // Загрузка содержимого при загрузке страницы
-                                    window.addEventListener('load', loadContent);
+            <!---
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span style="font-size:18px;color:rgb(173, 162, 244);">
+                        <b>Состоится в ПЯТНИЦУ, 16 ФЕВРАЛЯ с 13:00 до 17:00.</b>
+                    </span>
 
-                                </script>
+                    <br />
 
-                                <br />
-                                <!-- Кнопка закрытия модального окна -->
-                                <button onclick="closeModal()" style="margin-right: 10px; margin-bottom: 0px; margin-top: 10px;">
-                                    Закрыть
-                                </button>
-                            </div>
-                        </div>
+                    <span style="font-size:16px;">
+                        Проводится в библиотеке студгородка. Студгородок находится по адресу ул. Юности, 11, библиотека расположена напротив лестницы в 11 корпус. 
+                    </span>
+                    
+                    <span style="font-size:16px; color:rgb(255, 175, 175);">
+                        <b>Новый комплект учебников выдается только после сдачи книг за первый семестр!</b>
+                    </span>
+
+                    <span style="font-size:16px;">
+                        Иметь при себе: студенческий билет, электронный пропуск, ручку, сумку.
+                    </span>
+
+                    <br />
+                    
+                    <button onclick="closeModal()" style="margin-right: 10px; margin-bottom: 0px; margin-top: 10px;" >
+                            Закрыть
+                    </button>
                 </div>
             </div>
         

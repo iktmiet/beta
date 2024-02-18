@@ -2,7 +2,10 @@ NUMERATOR_SCHEDULE = `
 <!-- Понедельник -->
     <a id="MondayLinkAnchor"></a>
     <div class="day-block">
-        <div class="day-title">ПОНЕДЕЛЬНИК</div>
+        <div class="day-title">
+            <span>ПОНЕДЕЛЬНИК</span>
+            <div style="font-weight: 50; font-size:14px;">6 ПАР</div>
+        </div>
 
         <!-- ПАРА 1 -->
         <div class="class-item lecture">
@@ -23,7 +26,16 @@ NUMERATOR_SCHEDULE = `
         </div>
 
         <!-- ПЕРЕМЕНА -->
-        <div class="break-item"><b>Большой перерыв</b><br>11:50 - 12:30</div>
+        <div class="break-item">
+            <div style="padding-right: 15px;">
+                <i class="material-symbols-outlined time-icon">schedule</i>
+            </div>
+
+            <div>
+                <b>Большой перерыв</b>
+                <br>11:50 - 12:30
+            </div>
+        </div>
 
         <!-- ПАРА 3 -->
         <div class="class-item seminar">
@@ -51,6 +63,15 @@ NUMERATOR_SCHEDULE = `
             <span>15:30 - 16:50</span>
             <span>Егоров П. Е.</span>
         </div>
+
+        <!-- ПАРА 6 -->
+        <div class="class-item event">
+            <i class="material-symbols-outlined time-icon">wifi_tethering</i>
+            <strong>Введение в проф-ию</strong>
+            <span>1201</span>
+            <span>17:00 - 18:20</span>
+            <span>Тимошенко А.</span>
+        </div>
     </div>
 
 
@@ -59,7 +80,10 @@ NUMERATOR_SCHEDULE = `
     <!-- ВТОРНИК -->
     <a id="TuesdayLinkAnchor"></a>
     <div class="day-block">
-        <div class="day-title">ВТОРНИК</div>
+    <div class="day-title">
+        <span>ВТОРНИК</span>
+        <div style="font-weight: 50; font-size:14px;">5 ПАР</div>
+    </div>
 
         <!-- ПАРА 1 -->
         <div class="class-item lab">
@@ -89,7 +113,16 @@ NUMERATOR_SCHEDULE = `
         </div>
 
         <!-- ПЕРЕМЕНА -->
-        <div class="break-item"><b>Большой перерыв</b><br>13:20 - 14:00</div>
+        <div class="break-item">
+            <div style="padding-right: 15px;">
+                <i class="material-symbols-outlined time-icon">schedule</i>
+            </div>
+
+            <div>
+                <b>Большой перерыв</b>
+                <br>13:20 - 14:00
+            </div>
+        </div>
 
         <!-- ПАРА 4 -->
         <div class="class-item lecture">
@@ -115,7 +148,10 @@ NUMERATOR_SCHEDULE = `
     <!-- СРЕДА -->
     <a id="WednesdayLinkAnchor"></a>
     <div class="day-block">
-        <div class="day-title">СРЕДА</div>
+        <div class="day-title">
+            <span>СРЕДА</span>
+            <div style="font-weight: 50; font-size:14px;">5 ПАР</div>
+        </div>
 
         <!-- ПАРА 1 -->
         <div class="class-item lecture">
@@ -136,7 +172,16 @@ NUMERATOR_SCHEDULE = `
         </div>
 
         <!-- ПЕРЕМЕНА -->
-        <div class="break-item"><b>Большой перерыв</b><br>11:50 - 12:30</div>
+        <div class="break-item">
+            <div style="padding-right: 15px;">
+                <i class="material-symbols-outlined time-icon">schedule</i>
+            </div>
+
+            <div>
+                <b>Большой перерыв</b>
+                <br>11:50 - 12:30
+            </div>
+        </div>
 
         <!-- ПАРА 3 -->
         <div class="class-item lecture">
@@ -161,7 +206,7 @@ NUMERATOR_SCHEDULE = `
             <i class="material-symbols-outlined time-icon">translate</i>
             <strong>Иностранный язык                                         </strong>
             <span>3242</span>
-            <span>15:00 - 16:50</span>
+            <span>15:30 - 16:50</span>
             <span>Юрченко Е.И.</span>
         </div>
     </div>
@@ -189,7 +234,10 @@ NUMERATOR_SCHEDULE = `
     <!-- ПЯТНИЦА -->
     <a id="FridayLinkAnchor"></a>
     <div class="day-block">
-        <div class="day-title">ПЯТНИЦА</div>
+        <div class="day-title">
+            <span>ПЯТНИЦА</span>
+            <div style="font-weight: 50; font-size:14px;">2 ПАРЫ</div>
+        </div>
 
         <!-- ПАРА 1 -->
         <div class="class-item seminar">
